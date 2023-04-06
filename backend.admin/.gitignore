@@ -1,0 +1,9 @@
+# IDEs
+.idea
+.vscode
+__pycache__
+*.pyc
+
+django.log
+static/*
+*.sqlite3

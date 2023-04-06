@@ -1,0 +1,27 @@
+# GIT
+.git
+.gitignore
+
+# CI
+bitbucket-pipelines.yml
+
+# Docker
+docker-compose.yml
+
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.pyc
+
+# Django stuff:
+*.log
+
+# Virtual environment
+.env/
+.venv/
+venv/
+
+# PyCharm
+.idea
+
+# Vscode
+.vscode

@@ -1,0 +1,48 @@
+  version: '3.7'
+  
+  services:
+
+    # --------------------------
+    # MySQL
+    # --------------------------
+    cam-mysqldb:
+      image: mysql:8
+      container_name: cam-mysqldb
+      hostname: cam-mysqldb
+      volumes:
+        - "/data/dev/cam/mysqldb:/var/lib/mysql:rw"
+      environment:
+        TZ: America/Sao_Paulo
+        MYSQL_DATABASE: empresa
+        MYSQL_USER: cam_usr
+        MYSQL_PASSWORD: secret
+        MYSQL_ROOT_USER: root
+        MYSQL_ROOT_PASSWORD: topsecret
+      ports:
+        - "3306:3306"
+      command: mysqld --innodb-buffer-pool-size=20M  --character-set-server=utf8 --collation-server=utf8_general_ci
+      restart: always
+
+  # --------------------------
+  # Django
+  # --------------------------
+    cam-admin:
+      container_name: cam-admin
+      hostname: cam-admin
+      build:
+        context: ./backend.admin
+        dockerfile: docker/Dockerfile
+      environment:
+        TZ: America/Sao_Paulo
+        DJANGO_DATABASE_URL: mysql://root:topsecret@cam-mysqldb:3306/empresa
+        DJANGO_DATABASE_USER: cam_usr
+        DJANGO_DATABASE_PASS: secret
+        DJANGO_DATABASE_PORT: 3306
+      volumes:
+        - ./backend.admin:/code
+      ports:
+        - "8081:8081"
+      depends_on:
+        - cam-mysqldb
+      restart: always
+
