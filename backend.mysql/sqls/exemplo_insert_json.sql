@@ -1,5 +1,5 @@
 CALL sp_insert_funcionario('{
-  "nome": "Orioswaldo Matador",
+  "nome": "Orioswaldo Machado dos Santos",
   "cpf": "12345678900",
   "rg": "123456789",
   "sexo": "M",
