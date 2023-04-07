@@ -1,10 +1,10 @@
-CREATE TABLE Departamento (
+CREATE TABLE departamento (
   id INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL UNIQUE,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE Funcionario (
+CREATE TABLE funcionario (
   id INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL UNIQUE,
   cpf VARCHAR(11) NOT NULL UNIQUE,
@@ -16,10 +16,10 @@ CREATE TABLE Funcionario (
   carga_horaria_semanal DECIMAL(4,2),
   departamento_id INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (departamento_id) REFERENCES Departamento(id)
+  FOREIGN KEY (departamento_id) REFERENCES departamento(id)
 );
 
-CREATE TABLE Projeto (
+CREATE TABLE projeto (
   id INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
   horas_necessarias INT,
@@ -29,19 +29,19 @@ CREATE TABLE Projeto (
   supervisor_id INT,
   departamento_id INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (supervisor_id) REFERENCES Funcionario(id),
-  FOREIGN KEY (departamento_id) REFERENCES Departamento(id)
+  FOREIGN KEY (supervisor_id) REFERENCES funcionario(id),
+  FOREIGN KEY (departamento_id) REFERENCES departamento(id)
 );
 
-CREATE TABLE Projeto_Funcionario (
+CREATE TABLE projeto_funcionario (
   projeto_id INT,
   funcionario_id INT,
   carga_horaria_semanal DECIMAL(4,2),
   PRIMARY KEY (projeto_id, funcionario_id),
-  FOREIGN KEY (projeto_id) REFERENCES Projeto(id),
-  FOREIGN KEY (funcionario_id) REFERENCES Funcionario(id)
+  FOREIGN KEY (projeto_id) REFERENCES projeto(id),
+  FOREIGN KEY (funcionario_id) REFERENCES funcionario(id)
 );
 
-ALTER TABLE Projeto
-ADD CONSTRAINT UQ_Projeto_Nome_Departamento UNIQUE (nome, departamento_id);
+ALTER TABLE projeto
+ADD CONSTRAINT UQ_projeto_nome_departamento UNIQUE (nome, departamento_id);
 

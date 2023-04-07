@@ -18,23 +18,23 @@ BEGIN
   SET @salario = JSON_EXTRACT(json_str, '$.salario');
   SET @carga_horaria = JSON_EXTRACT(json_str, '$.carga_horaria');
   
-  INSERT INTO Funcionario (nome, cpf, rg, sexo, data_nascimento, habilitacao, salario, carga_horaria)
+  INSERT INTO funcionario (nome, cpf, rg, sexo, data_nascimento, habilitacao, salario, carga_horaria)
   VALUES (@nome, @cpf, @rg, @sexo, @data_nascimento, @habilitacao, @salario, @carga_horaria);
 END$$
 
 CREATE PROCEDURE sp_select_all_funcionario()
 BEGIN
-  SELECT * FROM Funcionario;
+  SELECT * FROM funcionario;
 END$$
 
 CREATE PROCEDURE sp_select_funcionario_by_id(IN func_id INT)
 BEGIN
-  SELECT * FROM Funcionario WHERE id = func_id;
+  SELECT * FROM funcionario WHERE id = func_id;
 END$$
 
 CREATE PROCEDURE sp_update_funcionario(IN func_id INT, IN func_data JSON)
 BEGIN
-  UPDATE Funcionario SET
+  UPDATE funcionario SET
     nome = JSON_EXTRACT(func_data, "$.nome"),
     cpf = JSON_EXTRACT(func_data, "$.cpf"),
     rg = JSON_EXTRACT(func_data, "$.rg"),
@@ -49,7 +49,7 @@ END$$
 
 CREATE PROCEDURE sp_delete_funcionario_by_id(IN func_id INT)
 BEGIN
-  DELETE FROM Funcionario WHERE id = func_id;
+  DELETE FROM funcionario WHERE id = func_id;
 END$$
 
 -- departamento
@@ -57,27 +57,27 @@ CREATE PROCEDURE sp_insert_departamento(IN json_str JSON)
 BEGIN
   SET @nome = JSON_EXTRACT(json_str, '$.nome');
 
-  INSERT INTO Departamento (nome)
+  INSERT INTO departamento (nome)
   VALUES (@nome);
 END$$
 
 CREATE PROCEDURE sp_select_departamento(IN dep_id INT)
 BEGIN
-  SELECT * FROM Departamento WHERE id = dep_id;
+  SELECT * FROM departamento WHERE id = dep_id;
 END$$
 
 CREATE PROCEDURE sp_update_departamento(IN dep_id INT, IN json_str JSON)
 BEGIN
   SET @nome = JSON_EXTRACT(json_str, '$.nome');
 
-  UPDATE Departamento SET
+  UPDATE departamento SET
     nome = @nome
   WHERE id = dep_id;
 END$$
 
 CREATE PROCEDURE sp_delete_departamento(IN dep_id INT)
 BEGIN
-  DELETE FROM Departamento WHERE id = dep_id;
+  DELETE FROM departamento WHERE id = dep_id;
 END$$
 
 -- projeto
@@ -89,18 +89,18 @@ BEGIN
   SET @supervisor_id = JSON_EXTRACT(json_data, '$.supervisor_id');
   SET @departamento_id = JSON_EXTRACT(json_data, '$.departamento_id');
 
-  INSERT INTO Projeto (nome, horas_necessarias, prazo_estimado, supervisor_id, departamento_id)
+  INSERT INTO projeto (nome, horas_necessarias, prazo_estimado, supervisor_id, departamento_id)
   VALUES (@nome, @horas_necessarias, @prazo_estimado, @supervisor_id, @departamento_id);
 END$$
 
 CREATE PROCEDURE sp_select_projeto_by_id(IN proj_id INT)
 BEGIN
-  SELECT * FROM Projeto WHERE id = proj_id;
+  SELECT * FROM projeto WHERE id = proj_id;
 END$$
 
 CREATE PROCEDURE sp_update_projeto(IN proj_id INT, IN json_data JSON)
 BEGIN
-  UPDATE Projeto SET
+  UPDATE projeto SET
     nome = JSON_EXTRACT(json_data, '$.nome'),
     horas_necessarias = JSON_EXTRACT(json_data, '$.horas_necessarias'),
     prazo_estimado = JSON_EXTRACT(json_data, '$.prazo_estimado'),
@@ -111,7 +111,7 @@ END$$
 
 CREATE PROCEDURE sp_delete_projeto(IN proj_id INT)
 BEGIN
-  DELETE FROM Projeto WHERE id = proj_id;
+  DELETE FROM projeto WHERE id = proj_id;
 END$$
 
 -- projeto_funcionario
@@ -121,7 +121,7 @@ CREATE PROCEDURE sp_insert_projeto_funcionario(
     IN carga_horaria_semanal DECIMAL(4,2)
 )
 BEGIN
-    INSERT INTO Projeto_Funcionario (projeto_id, funcionario_id, carga_horaria_semanal)
+    INSERT INTO projeto_funcionario (projeto_id, funcionario_id, carga_horaria_semanal)
     VALUES (projeto_id, funcionario_id, carga_horaria_semanal);
 END$$
 
@@ -131,7 +131,7 @@ CREATE PROCEDURE sp_update_projeto_funcionario(
     IN carga_horaria_semanal DECIMAL(4,2)
 )
 BEGIN
-    UPDATE Projeto_Funcionario
+    UPDATE projeto_funcionario
     SET carga_horaria_semanal = carga_horaria_semanal
     WHERE projeto_id = projeto_id AND funcionario_id = funcionario_id;
 END$$
@@ -141,7 +141,7 @@ CREATE PROCEDURE sp_delete_projeto_funcionario(
     IN funcionario_id INT
 )
 BEGIN
-    DELETE FROM Projeto_Funcionario
+    DELETE FROM projeto_funcionario
     WHERE projeto_id = projeto_id AND funcionario_id = funcionario_id;
 END$$
 
@@ -149,9 +149,9 @@ CREATE PROCEDURE sp_select_projeto_funcionario(IN projeto_id INT)
 BEGIN
     SELECT pf.projeto_id, pf.funcionario_id, pf.carga_horaria_semanal,
     p.nome as nome_projeto, f.nome as nome_funcionario
-    FROM Projeto_Funcionario pf
-    JOIN Projeto p ON pf.projeto_id = p.id
-    JOIN Funcionario f ON pf.funcionario_id = f.id
+    FROM projeto_funcionario pf
+    JOIN projeto p ON pf.projeto_id = p.id
+    JOIN funcionario f ON pf.funcionario_id = f.id
     WHERE pf.projeto_id = projeto_id;
 END$$
 

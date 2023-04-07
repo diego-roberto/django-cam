@@ -24,7 +24,7 @@ class TestDatabase(unittest.TestCase):
     def test_department_crud(self):
 
         # teste de inserção de departmento
-        query = "INSERT INTO Departamento (nome) VALUES (%s)"
+        query = "INSERT INTO departamento (nome) VALUES (%s)"
         values = ("Departamento de Teste",)
         self.cursor.execute(query, values)
         self.db.commit()
@@ -38,7 +38,7 @@ class TestDatabase(unittest.TestCase):
         department_id = result[0]
 
         # teste de seleção de departmento
-        query = "SELECT nome FROM Departamento WHERE id = %s"
+        query = "SELECT nome FROM departamento WHERE id = %s"
         values = (department_id,)
         self.cursor.execute(query, values)
         result = self.cursor.fetchone()
@@ -47,11 +47,11 @@ class TestDatabase(unittest.TestCase):
             print("Teste de leitura: PASS")
 
         # teste de update de departmento
-        query = "UPDATE Departamento SET nome = %s WHERE id = %s"
+        query = "UPDATE departamento SET nome = %s WHERE id = %s"
         values = ("Departamento de Teste - Sob Nova Direção", department_id)
         self.cursor.execute(query, values)
         self.db.commit()
-        query = "SELECT nome FROM Departamento WHERE id = %s"
+        query = "SELECT nome FROM departamento WHERE id = %s"
         values = (department_id,)
         self.cursor.execute(query, values)
         result = self.cursor.fetchone()
@@ -63,7 +63,7 @@ class TestDatabase(unittest.TestCase):
 
 
         # teste de exclusão de departamento
-        query = "DELETE FROM Departamento WHERE id = %s"
+        query = "DELETE FROM departamento WHERE id = %s"
         values = (department_id,)
         self.cursor.execute(query, values)
         self.db.commit()

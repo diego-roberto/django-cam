@@ -3,6 +3,9 @@ from django.db import models
 class Departamento(models.Model):
     nome = models.CharField(max_length=255, unique=True)
 
+    class Meta:
+        db_table = 'departamento'
+
     def __str__(self):
         return self.nome
 
@@ -23,6 +26,9 @@ class Funcionario(models.Model):
     carga_horaria_semanal = models.DecimalField(max_digits=4, decimal_places=2)
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
 
+    class Meta:
+        db_table = 'funcionario'
+
     def __str__(self):
         return self.nome
 
@@ -35,6 +41,9 @@ class Projeto(models.Model):
     supervisor = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
 
+    class Meta:
+        db_table = 'projeto'
+
     def __str__(self):
         return self.nome
 
@@ -44,6 +53,7 @@ class Projeto_Funcionario(models.Model):
     carga_horaria_semanal = models.DecimalField(max_digits=4, decimal_places=2)
 
     class Meta:
+        db_table = 'projeto_funcionario'
         unique_together = ('projeto', 'funcionario')
 
     def __str__(self):
