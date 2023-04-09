@@ -1,0 +1,5 @@
+#header {
+    /* background-color: #9b1212e0 !important; */
+    background-image: linear-gradient( 65deg, rgb(141,14,36) 0%, rgb(195,16,47) 28%, rgb(229,33,67) 56%, rgb(236,111,9) 95%);
+    position: relative;
+}
