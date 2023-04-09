@@ -5,6 +5,9 @@ class Departamento(models.Model):
 
     class Meta:
         db_table = 'departamento'
+        verbose_name = 'Departamento'
+        verbose_name_plural = 'Departamentos'
+        ordering = ('nome',)
 
     def __str__(self):
         return self.nome
@@ -28,6 +31,9 @@ class Funcionario(models.Model):
 
     class Meta:
         db_table = 'funcionario'
+        verbose_name = 'Funcionário'
+        verbose_name_plural = 'Funcionários'
+        ordering = ('nome',)
 
     def __str__(self):
         return self.nome
@@ -43,6 +49,9 @@ class Projeto(models.Model):
 
     class Meta:
         db_table = 'projeto'
+        verbose_name = 'Projeto'
+        verbose_name_plural = 'Projetos'
+        ordering = ('prazo_estimado',)
 
     def __str__(self):
         return self.nome
@@ -58,3 +67,4 @@ class Projeto_Funcionario(models.Model):
 
     def __str__(self):
         return f"{self.projeto} - {self.funcionario}"
+    

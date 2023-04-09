@@ -26,3 +26,4 @@ class ProjetoList(generics.ListCreateAPIView):
 class ProjetoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Projeto.objects.all()
     serializer_class = ProjetoSerializer
+    
