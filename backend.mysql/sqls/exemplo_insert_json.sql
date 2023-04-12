@@ -6,5 +6,6 @@ CALL sp_insert_funcionario('{
   "data_nascimento": "1980-06-02",
   "habilitacao": true,
   "salario": 55000.00,
-  "carga_horaria": 40
+  "carga_horaria": 40,
+  "is_supervisor": true,
 }');
