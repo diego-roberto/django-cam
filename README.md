@@ -2,11 +2,16 @@
 Projeto de gerenciamento de registros de departamentos, funcionários e projetos.
 
 ## Tecnologias utilizadas:
-![image]({https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue}) Python 3.1 </br>
-![image]({https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green}) Django 4.2 </br>
-![image]({https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white}) MySQL 8 </br>
-![image]({https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white}) Docker-Compose 3.7 </br>
-![image]({https://img.shields.io/badge/django%20rest-ff1709?style=for-the-badge&logo=django&logoColor=white}) Django Rest 3.14.0 </br>
+<img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue"/>
+<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green"/>
+<img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/>
+<img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/django%20rest-ff1709?style=for-the-badge&logo=django&logoColor=white"/> </br>
+Python 3.1 </br>
+Django 4.2 </br>
+Django Rest 3.14.0 </br>
+MySQL 8 </br>
+Docker-Compose 3.7 </br>
 django-mysql 4.9.0 </br>
 django_extensions 3.2.1 </br>
 whitenoise 6.4.0 </br>
