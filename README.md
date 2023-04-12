@@ -41,6 +41,7 @@ Execute o comando para instalar as dependências do projeto:
 >
 Execute o comando para criar e então aplicar as migrações do banco de dados:
 > python manage.py makemigrations
+>
 > python manage.py migrate
 >
 Execute o comando para criar um usuário administrador:
