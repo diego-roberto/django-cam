@@ -2,11 +2,13 @@
 Projeto de gerenciamento de registros de departamentos, funcionários e projetos.
 
 ## Tecnologias utilizadas:
+<h3>
 <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue"/>
 <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green"/>
 <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/>
 <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/django%20rest-ff1709?style=for-the-badge&logo=django&logoColor=white"/> </br>
+</h3>
 Python 3.1 </br>
 Django 4.2 </br>
 Django Rest 3.14.0 </br>
